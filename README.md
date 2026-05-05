@@ -1,34 +1,70 @@
-Retail Sales SQL Pipeline
+# Retail Sales SQL Pipeline
 
-Overview:
+- Project Overview
 
-This project focuses on analyzing retail sales data using SQL, with an emphasis on thinking about data as part of a structured workflow rather than isolated queries.
+This project simulates a basic SQL-based data pipeline using retail sales data.
 
-The goal is to understand how data moves between tables and how consistent query logic supports reliable outputs.
+The focus is on transforming raw sales data into a clean, structured format that can be used for analysis, using PostgreSQL and step-by-step SQL queries.
 
-This project is part of my self-study process as I move from basic SQL queries toward understanding data pipelines.
+---
 
-What I worked on:
+- Why This Matters
 
-Querying retail sales data
-Working with multiple related tables
-Generating basic insights from sales and transactions
-Structuring queries to produce consistent results
+In real-world data workflows, raw sales data is often:
+- incomplete  
+- inconsistent  
+- not ready for analysis  
 
-Key focus areas:
+Being able to clean, transform, and structure this data using SQL is a key skill for entry-level data roles.
 
-Understanding how data flows between tables
-Maintaining consistency in query outputs
-Thinking about how SQL logic behaves across different steps
+This project focuses on building those skills in a practical way.
 
-Project Structure:
+---
 
-SQL queries are written in a structured, step-by-step format
-Each section includes explanations to improve readability and understanding
-Focus is on clarity and learning, not production-level pipelines
+- What This Project Demonstrates
 
-What I learned:
+- Cleaning and preparing raw sales data  
+- Writing SQL queries for data transformation  
+- Using JOINs to combine related datasets  
+- Applying aggregations to analyze sales performance  
+- Structuring data into analysis-ready formats  
+- Thinking through data workflows step-by-step  
 
-Data analysis becomes more complex with multiple tables
-Consistency is as important as correctness
-Small mistakes in joins or filters can impact results
+---
+
+- Tech & Tools
+
+- PostgreSQL  
+- SQL  
+- Relational database concepts  
+- Git & GitHub  
+
+---
+
+- Project Structure
+
+- SQL Scripts  
+  Step-by-step queries covering:
+  - Data cleaning  
+  - Data transformation  
+  - Basic sales analysis  
+
+- Documentation  
+  Explanations included to improve clarity and understanding.
+
+This project focuses on building strong SQL foundations and understanding data workflows, rather than production-level pipeline tools.
+
+---
+
+- Example Query
+
+```sql
+-- Total revenue per product
+
+SELECT 
+    product_id,
+    SUM(quantity * price) AS total_revenue
+FROM sales
+GROUP BY product_id
+ORDER BY total_revenue DESC;
+
