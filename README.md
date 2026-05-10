@@ -1,76 +1,71 @@
-🛒 Retail Sales SQL Pipeline
+• Retail Sales SQL Pipeline
 
-📌 Project Overview
+• Project Overview
 
-This project simulates a basic SQL-based data pipeline using retail sales data in PostgreSQL.
+This project was built while following my SQL learning path and simulates a simple data pipeline using retail sales data in PostgreSQL.
 
-The focus is on transforming raw transactional sales data into a clean, structured format that can be used for analysis using step-by-step SQL queries.
+It focuses on taking raw transactional data and turning it into a clean, structured format that can actually be used for analysis.
 
-It reflects how real-world data workflows prepare business data for reporting, dashboards, and decision-making.
+The goal is to understand how SQL is used in real workflows to prepare data for reporting, dashboards, and business decisions.
 
-🎯 Why This Matters
+• Why This Project Matters
 
-In real-world data environments, retail sales data is rarely ready for analysis. It is often:
+In real business environments, retail sales data is rarely ready to use straight away. It usually comes with issues like:
 
-• Incomplete or missing values
-• Inconsistent across sources
-• Unstructured or duplicated
-• Not optimized for reporting or analytics
+• Missing or incomplete values
+• Duplicate or inconsistent records
+• Poor structure for analysis
+• Data coming from multiple sources
 
-Before insights can be generated, data must be properly cleaned, transformed, and structured.
+Before any insights can be generated, the data needs to be cleaned and reshaped.
 
-This project builds those foundational SQL skills used in:
+This project helped me practice that process using SQL, in a way that reflects how data is prepared in real analytics and junior data engineering work.
 
-Data Analyst roles
-Junior Data Engineering workflows
-BI and reporting environments
+• What This Project Covers
 
-🧠 What This Project Demonstrates
+This project shows how I worked through a basic SQL pipeline step by step:
 
-This project demonstrates practical SQL skills across a full data workflow:
+• Cleaning raw retail sales data
+• Transforming and structuring datasets
+• Joining related tables for richer analysis
+• Calculating key business metrics like revenue and totals
+• Writing aggregation queries for reporting
+• Preparing data for analysis-ready output
 
-• Cleaning and preparing raw retail sales data
-• Writing structured SQL transformation queries
-• Joining related datasets for enriched analysis
-• Using aggregations to measure business performance
-• Calculating key metrics such as revenue and totals
-• Structuring data into analysis-ready outputs
-• Thinking through step-by-step data pipeline logic
+Overall, it reflects early data engineering thinking:
 
-It reflects early-stage data engineering thinking:
+raw data → cleaned data → usable insights
 
-raw data → cleaned data → structured analytics output
-
-🛠️ Tech Stack
+• Tech Stack
 
 • PostgreSQL
-• SQL (Data transformation & analysis)
-• Relational Database Concepts
-• Git & GitHub (version control & documentation)
+• SQL (data transformation & analysis)
+• Relational database concepts
+• Git & GitHub (version control)
 
-📁 Project Structure
+• Project Structure
 
-🔹 SQL Scripts
+• SQL Scripts
 
-Step-by-step pipeline-style queries covering:
+The scripts follow a simple pipeline approach:
 
 • Data cleaning and validation
-• Data transformation logic
-• Sales performance analysis
+• Data transformation steps
+• Sales analysis and aggregation queries
 
-Each script builds progressively from raw data understanding to structured business insights.
+Each step builds on the previous one to show how raw data becomes structured insight.
 
-🔹 Documentation
+• Documentation
 
-Each query is explained to support understanding of:
+Each query is written with explanations to help show:
 
-• Why the transformation is needed
-• How the SQL logic works
-• What business problem it solves
+• Why the step is needed
+• What problem it solves
+• How it connects to the overall dataset
 
-This improves readability and shows clear analytical thinking progression.
+This was done to reinforce my SQL thinking and make the workflow easy to follow.
 
-💡 Example Query
+• Example Query
 
 -- Total revenue per product
 
@@ -81,16 +76,19 @@ FROM sales
 GROUP BY product_id
 ORDER BY total_revenue DESC;
 
-📊 Learning Outcome
+• What I Learned
 
-Through this project, I developed and strengthened:
+This project helped me strengthen:
 
-• SQL-based data transformation skills
-• Understanding of retail sales data structures
-• Aggregation and business metric calculation
-• Step-by-step pipeline thinking using SQL
-• Ability to prepare data for analytics use cases
+• SQL fundamentals in a practical setting
+• Data cleaning and transformation logic
+• Aggregation for business insights
+• Pipeline-style thinking using SQL
+• Understanding how retail data is structured in real systems
 
+• Final Note
 
+This is part of my ongoing SQL learning journey as I build toward entry-level Data Analyst and Data Engineering roles.
 
-This project forms part of a broader progression toward Data Analyst and Data Engineering roles, focusing on strong SQL fundamentals and real-world data workflows.
+It represents early-stage practical work focused on building strong foundations in real-world data workflows.
+
