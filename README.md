@@ -1,72 +1,81 @@
-# Retail Sales SQL Pipeline
-
-This project is part of my SQL learning portfolio focused on building practical data analysis and data engineering fundamentals using PostgreSQL.
-
-The project uses SQL to explore how raw retail sales data can be cleaned, transformed, and analysed into structured outputs for reporting and business insights.
+# • Retail Sales SQL Pipeline  
+### End-to-End ETL Simulation for Data Cleaning, Transformation & Business Reporting
 
 ---
 
-## • Project Context
+## Project Overview
 
-Retail sales data typically comes in raw transactional form and requires processing before it can be used for analysis.
+This project demonstrates a structured SQL-based data pipeline that simulates how retail sales data is processed in real-world analytics environments.
 
-This project focuses on simulating that process using SQL.
+It focuses on transforming raw transactional data into clean, structured datasets that can be used for reporting, dashboards, and business decision-making.
 
----
-
-## • Real-world Data Challenges
-
-Retail sales datasets often include:
-
-- missing values  
-- duplicate records  
-- inconsistent formatting  
-- transactional-level raw data  
+The project reflects core skills used in Data Analyst and Junior Data Engineering roles:
+- Data preparation and cleaning
+- SQL-based ETL processes
+- Structured data modeling
+- Business-oriented data analysis
 
 ---
 
-## • What I Worked On
+## ⚙️ ETL Workflow (Real-World Simulation)
 
-In this project, I used SQL to perform core data workflow tasks including:
+### 1. Extract
+Raw retail sales data was loaded into a relational database from a CSV source.
 
-- cleaning and preparing raw sales data  
-- handling missing and inconsistent values  
-- joining related datasets  
-- aggregating data for sales insights  
-- calculating revenue-related metrics  
+### 2. Transform
+SQL was used to clean and structure the dataset:
 
----
+- Handled missing values and data inconsistencies  
+- Removed duplicate records  
+- Standardized date, text, and numeric formats  
+- Structured transactional data into analysis-ready tables  
+- Ensured consistency across product and sales records  
 
-## • How I Approached It
-
-I focused on understanding how raw transactional data is transformed into structured outputs that can support reporting and basic business decision-making.
-
----
-
-## • Tools Used
-
-- PostgreSQL  
-- SQL  
-- Git & GitHub  
+### 3. Load
+The cleaned dataset was stored in structured SQL tables optimized for querying, aggregation, and reporting.
 
 ---
 
-## • Project Contents
+## Tools & Technologies
 
-- Data cleaning queries  
-- Data transformation queries  
-- Sales aggregation queries  
-- Revenue analysis queries  
+- SQL (PostgreSQL / MySQL compatible)
+- Relational Database Design
+- Data Cleaning & Transformation Techniques
+- Git & GitHub Version Control
 
 ---
 
-## • Example SQL Query
+## Core SQL Capabilities Demonstrated
+
+- Data extraction and filtering (SELECT, WHERE, ORDER BY)  
+- Table joins (INNER JOIN, LEFT JOIN)  
+- Aggregations (SUM, COUNT, AVG, GROUP BY)  
+- Data cleaning using SQL functions  
+- Schema design and structured query logic  
+- Analytical thinking using transactional data  
+
+---
+
+## Business Value & Use Cases
+
+This project reflects how retail organizations prepare raw data for operational and strategic decision-making.
+
+It supports use cases such as:
+- Sales performance tracking  
+- Revenue analysis and reporting  
+- Customer behavior insights  
+- KPI generation for dashboards (Power BI / Tableau)  
+- Data-driven business decision support  
+
+---
+
+## Example SQL Insight Query
 
 ```sql
+-- Total revenue generated per product
 SELECT 
     product_id,
     SUM(quantity * price) AS total_revenue
 FROM sales
 GROUP BY product_id
 ORDER BY total_revenue DESC;
-
