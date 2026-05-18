@@ -1,6 +1,6 @@
 • Retail Sales SQL Pipeline
----
-• End-to-End ETL Simulation for Data Cleaning, Transformation & Business Reporting
+
+ End-to-End ETL Simulation for Data Cleaning, Transformation & Business Reporting
 ---
 • Project Overview
 ---
