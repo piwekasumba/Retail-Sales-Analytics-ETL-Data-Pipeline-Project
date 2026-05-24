@@ -1,10 +1,11 @@
 SQL Retail Sales Data Pipeline
----
+
 This project simulates a retail data pipeline where raw transactional data is cleaned, transformed, and structured into an analytics-ready dataset using SQL.
 
 The objective is to demonstrate how raw retail sales data can be converted into meaningful business insights through ETL-style processing.
 
----
+
+
 
 Data Pipeline Process:
 
@@ -31,7 +32,7 @@ Data Pipeline Process:
 - Cleaned datasets prepared for reporting
 - Analysis outputs stored in the results folder
 
----
+
 
 Business Value:
 
@@ -42,7 +43,7 @@ This pipeline demonstrates how retail transaction data is transformed into struc
 - Product performance analysis
 - Customer behaviour understanding
 
----
+
 
 Skills Demonstrated:
 
@@ -53,13 +54,13 @@ Skills Demonstrated:
 - Business KPI Analysis
 - Data Pipeline Structuring
 
----
+
 
 Key Outcome:
 
 This project reflects an end-to-end retail data pipeline that transforms raw transactional data into structured insights suitable for business intelligence and decision-making.
 
----
+
 
 Author:
 
