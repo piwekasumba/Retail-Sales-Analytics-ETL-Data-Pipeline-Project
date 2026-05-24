@@ -1,97 +1,70 @@
-# SQL Retail Sales Data Pipeline
+SQL Retail Sales Data Pipeline
+---
+This project simulates a retail data pipeline where raw transactional data is cleaned, transformed, and structured into an analytics-ready dataset using SQL.
 
-## Project Overview
-This project demonstrates a beginner-friendly data engineering workflow using SQL and PostgreSQL. 
-
-The project simulates a retail sales environment where raw transactional data is structured, cleaned, transformed, and analyzed to generate business insights.
-
-The goal is to showcase core SQL and data engineering concepts such as relational database design, data cleaning, ETL transformations, and analytical reporting.
+The objective is to demonstrate how raw retail sales data can be converted into meaningful business insights through ETL-style processing.
 
 ---
 
-## Project Structure
+Data Pipeline Process:
 
-sql-retail-sales-data-pipeline
-│
-├── data/            # Raw and processed datasets
-├── sql/             # SQL scripts for schema, cleaning, transformation, and analysis
-├── results/         # Output reports generated from analysis queries
-└── README.md        # Project documentation
+1. Data Ingestion
+- Loaded raw retail sales data into a relational database
 
+2. Data Cleaning (ETL - Extract & Transform)
+- Removed duplicate records
+- Standardised inconsistent values
+- Fixed negative quantities and invalid pricing issues
 
----
+3. Data Transformation
+- Joined multiple relational tables into a unified dataset
+- Extracted time-based fields (year, month) from order dates
+- Structured dataset for analytical queries
 
-## Technologies Used
+4. Business Analysis Layer
+- Revenue calculations (total and category-based)
+- Monthly sales trend analysis
+- Top-performing products identification
+- Customer purchase behaviour insights
 
-- SQL
-- PostgreSQL
-- Relational Databases
-- Git & GitHub
-
----
-
-## SQL Workflow
-
-This project follows a simplified ETL-style workflow:
-
-1. **Create Database Tables**
-   - Customers
-   - Products
-   - Orders
-   - Order Items
-   - Inventory
-
-2. **Data Cleaning**
-   - Identify missing values
-   - Remove invalid records
-   - Fix negative quantities and prices
-
-3. **Data Transformation**
-   - Join relational tables
-   - Create structured sales dataset
-   - Extract year and month from order dates
-
-4. **Data Analysis**
-   - Total revenue calculation
-   - Monthly sales trends
-   - Top selling products
-   - Revenue by category
-   - Top customers
-
-5. **Results Export**
-   - Analysis outputs saved in the `results/` folder.
+5. Output Layer
+- Cleaned datasets prepared for reporting
+- Analysis outputs stored in the results folder
 
 ---
 
-## Skills Demonstrated
+Business Value:
 
-- SQL Querying
-- Data Cleaning
-- Data Transformation
-- ETL Concepts
-- Relational Database Design
-- Aggregations and Reporting
-- Data Analysis using SQL
+This pipeline demonstrates how retail transaction data is transformed into structured insights used for:
 
----
-
-## How to Run the Project
-
-1. Create a PostgreSQL database.
-2. Run SQL scripts in the following order:
-
-----------------------------------------
-
-3. Analysis results will be generated and exported to the `results/` directory.
+- Sales performance tracking
+- Business reporting
+- Product performance analysis
+- Customer behaviour understanding
 
 ---
 
-## Author
+Skills Demonstrated:
 
-Piwe (Faizel) Kasumba
+- SQL (PostgreSQL)
+- Data Cleaning and Transformation
+- ETL Workflow Design
+- Relational Data Modelling
+- Business KPI Analysis
+- Data Pipeline Structuring
 
-Entry-Level Data Engineer focused on SQL, PostgreSQL, and data engineering fundamentals.
+---
 
-GitHub:
-https://github.com/piwekasumba
+Key Outcome:
 
+This project reflects an end-to-end retail data pipeline that transforms raw transactional data into structured insights suitable for business intelligence and decision-making.
+
+---
+
+Author:
+
+Piwe (Faizel) Kasumba  
+Entry-Level Data Analyst & Aspiring Data Engineer  
+Focused on SQL, data pipelines, and business analytics  
+
+GitHub: https://github.com/piwekasumba
