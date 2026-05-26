@@ -1,65 +1,50 @@
-# Retail Sales Analytics & ETL Data Pipeline Project
----
-## Project Overview
-
-This project focuses on retail sales data analysis combined with ETL (Extract, Transform, Load) processes to simulate how raw transactional data is transformed into structured, analytics-ready datasets.
-
-It bridges the gap between data analytics and data engineering by combining SQL-based analysis with data preparation workflows.
+# Retail Sales ETL & Analytics Pipeline (PostgreSQL)
 
 ---
+## Overview
 
-## Key Skills Demonstrated
-
-- SQL-based data extraction and transformation
-- Data cleaning and standardisation
-- ETL process simulation (Extract → Transform → Load)
-- Sales performance analysis
-- KPI-focused reporting logic
+This project simulates an end-to-end retail data pipeline where raw sales data is extracted, transformed, and structured into an analytics-ready format using SQL and PostgreSQL.
 
 ---
+## Business Objective
 
-## Business Problem Addressed
-
-Retail businesses need to understand:
-
-- Sales performance across products and categories
-- Revenue trends over time
-- Customer purchasing behaviour
-- Data inconsistencies in raw transaction systems
-
-This project demonstrates how raw retail data is structured for reporting and analysis.
+- Build a structured ETL pipeline using SQL
+- Clean and transform raw retail transaction data
+- Create analytics-ready datasets for reporting
+- Support business KPI tracking and sales insights
 
 ---
-
 ## Tools Used
 
-- SQL (PostgreSQL / MySQL)
-- Relational dataset modelling concepts
+- PostgreSQL
+- SQL (CTEs, Joins, Window Functions, Aggregations)
 
 ---
+## Pipeline Stages
 
-## Key Insights (Example Outcomes)
+### 1. Extract
+Raw retail transaction data ingestion
 
-- Identification of top-performing product categories
-- Revenue trends across time periods
-- Sales performance breakdown by segment
-- Cleaned dataset ready for reporting and BI use
+### 2. Transform
 
----
-
-## Business Value
-
-This project reflects real-world retail analytics workflows used in:
-
-- Business intelligence reporting
-- Sales performance tracking
-- Operational decision-making
-- Data preparation for dashboards
+- Data cleaning and standardization
+- Handling duplicates and inconsistencies
+- Structuring transactional data
 
 ---
-## Future Improvements (Phase 3 Direction)
+### 3. Load
 
-- Improve SQL-based data transformation workflows for cleaner and more structured reporting
-- Explore basic data modelling concepts such as fact and dimension tables for better organisation of data
-- Extend analysis by preparing datasets for use in BI tools such as Power BI or Tableau
-- Improve reporting outputs to better support business decision-making and KPI tracking
+- Creating analytics-ready tables
+- Preparing dataset for reporting and KPI analysis
+
+---
+## Key Outputs
+
+- Sales performance summaries
+- Customer purchasing behavior patterns
+- Product-level performance insights
+
+---
+## Outcome
+
+This project demonstrates a real-world ETL workflow designed to support retail analytics and business reporting systems.
