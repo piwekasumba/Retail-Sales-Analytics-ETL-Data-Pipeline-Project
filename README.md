@@ -1,50 +1,77 @@
-# Retail Sales ETL & Analytics Pipeline (PostgreSQL)
+# Retail Sales ETL & Analytics Pipeline | PostgreSQL
+---
+## Project Overview
+
+This project simulates a retail sales ETL workflow where raw transaction data is extracted, cleaned, transformed, and structured into analytics-ready datasets using SQL and PostgreSQL.
+
+The focus of the project is to demonstrate how data pipelines support reporting, business intelligence, and sales performance analysis in a retail environment.
+
+The workflow follows a simplified Extract, Transform, Load (ETL) process commonly used in analytics and reporting systems.
 
 ---
-## Overview
 
-This project simulates an end-to-end retail data pipeline where raw sales data is extracted, transformed, and structured into an analytics-ready format using SQL and PostgreSQL.
+## Business Problem
+
+Retail businesses depend on accurate and structured sales data to:
+- track product performance
+- monitor customer purchasing behavior
+- support KPI reporting
+- improve operational visibility
+
+This project demonstrates how SQL-based ETL processes can prepare retail data for business reporting and analytics.
 
 ---
-## Business Objective
 
-- Build a structured ETL pipeline using SQL
-- Clean and transform raw retail transaction data
-- Create analytics-ready datasets for reporting
-- Support business KPI tracking and sales insights
+## ETL Workflow
+
+### Extract
+
+Imported and reviewed raw retail sales transaction data.
+
+### Transform
+
+Performed:
+
+- data cleaning
+- standardization
+- duplicate handling
+- structured SQL transformations
+- reporting-focused data preparation
+
+### Load
+
+Prepared analytics-ready tables designed for downstream reporting and business analysis.
 
 ---
-## Tools Used
+
+## Technical Focus
 
 - PostgreSQL
-- SQL (CTEs, Joins, Window Functions, Aggregations)
+- SQL Transformations
+- ETL Workflow Concepts
+- Data Cleaning
+- Aggregations
+- Window Functions
+- Reporting-Oriented Data Structuring
 
 ---
-## Pipeline Stages
 
-### 1. Extract
-Raw retail transaction data ingestion
+## Key Analytics Areas
 
-### 2. Transform
+### Sales Performance Analysis
 
-- Data cleaning and standardization
-- Handling duplicates and inconsistencies
-- Structuring transactional data
+Generated insights into sales activity and product performance trends.
 
----
-### 3. Load
+### Customer Insights
 
-- Creating analytics-ready tables
-- Preparing dataset for reporting and KPI analysis
+Explored purchasing behavior patterns using SQL-based analysis.
+
+### Reporting Preparation
+
+Structured transformed data for simplified reporting and KPI analysis workflows.
 
 ---
-## Key Outputs
 
-- Sales performance summaries
-- Customer purchasing behavior patterns
-- Product-level performance insights
-
----
 ## Outcome
 
-This project demonstrates a real-world ETL workflow designed to support retail analytics and business reporting systems.
+This project demonstrates foundational ETL and analytics workflow concepts used to support business intelligence and retail reporting environments.
