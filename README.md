@@ -1,33 +1,47 @@
-# Retail Sales Analytics ETL Data Pipeline Project
+Business Problem:
 
-## Problem Statement
+• Retail businesses generate large volumes of transactional data daily. Before this data can be used for reporting and analysis, it must be cleaned, transformed, and structured into an analytics-ready format.
 
-- Retail businesses need clean and structured sales data to understand revenue performance and customer behavior.
+• This project demonstrates how SQL can be used to simulate an ETL-style process that converts raw retail sales data into structured insights for business decision-making.
 
-## Dataset Overview
+Project Objectives:
 
-- This project uses retail sales data including customers, transactions, products, and sales records.
+• Clean and transform raw retail sales data
+• Build analytics-ready datasets using SQL
+• Analyze sales performance and trends
+• Support reporting and KPI tracking
+• Simulate ETL data pipeline logic
 
-## Tools Used
+Key Insights:
 
-- SQL (PostgreSQL)
-- ETL concepts (Extract, Transform, Load)
+• Identified sales trends over time
+• Analyzed product and category performance
+• Measured revenue patterns
+• Highlighted high-performing segments
+• Structured raw data into usable reporting format
 
-## Data Workflow
+Skills Demonstrated:
 
-- Raw sales data → cleaning → transformation → structured tables → analytics queries
+SQL Skills:
 
-## Key SQL Techniques Used
+• Data cleaning
+• Joins and aggregations
+• Transformation logic
+• Query optimization basics
 
-- Data cleaning (NULL handling)
-- JOIN operations across tables
-- Aggregation of sales metrics
-- Revenue grouping by product/customer
+ETL Skills:
 
-## Business Insights
+• Extract, Transform, Load concepts
+• Data structuring
+• Pipeline thinking
+• Analytics dataset creation
 
-- Identifies top-performing products, customer behavior patterns, and revenue drivers.
+Analytics Skills:
 
-## Outcome / Value
+• Sales performance analysis
+• KPI reporting
+• Trend identification
 
-- Provides structured reporting layer for retail business decision-making and KPI tracking.
+Business Impact:
+
+• Clean and structured retail data enables better decision-making around sales performance, inventory planning, and business strategy.
