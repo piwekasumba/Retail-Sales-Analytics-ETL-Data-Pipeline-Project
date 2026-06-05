@@ -1,51 +1,63 @@
-Project Title:
+# Retail Sales Data Pipeline (PostgreSQL)
 
-Retail Sales Data Pipeline (PostgreSQL) — ETL, Data Modeling & Analytical Reporting
------
-Project Description:
+## Project Overview
 
-Built a structured PostgreSQL-based data pipeline to transform raw retail sales data (retail_sales_raw.csv) into analysis-ready datasets.
+This project demonstrates a PostgreSQL-based data pipeline that transforms raw retail sales data into structured, analysis-ready datasets.
 
-The project follows a simplified ETL workflow (Extract → Transform → Load), focusing on data ingestion, cleaning, relational structuring, and generating reliable analytical outputs using SQL.
+It follows a simplified ETL workflow (Extract → Transform → Load), focusing on data ingestion, cleaning, relational structuring, and analytical reporting using SQL.
 
-Rather than only executing analytical queries, this project emphasizes data preparation, transformation logic, and structured dataset building, simulating a real-world data engineering workflow at a foundational level.
------
-Key Focus Areas:
+The emphasis is on data preparation and transformation logic rather than only querying, simulating a foundational data engineering workflow.
 
-• Loading raw CSV data into PostgreSQL staging tables
-• Data cleaning and standardization (handling missing values, inconsistent formats, and data quality issues)
-• Designing structured relational tables for analytical use (basic fact-style modeling)
-• SQL-based transformations to prepare analysis-ready datasets
-• Building aggregated reporting queries for business insights
------
-Skills Demonstrated:
+---
 
-SQL • PostgreSQL • ETL Concepts • Data Cleaning • Data Modeling • Data Transformation • Analytical Querying • Reporting Datasets
------
-Project Highlights:
+## Key Focus Areas
 
-• Transformed raw retail sales CSV data into structured PostgreSQL tables
-• Built SQL-based transformation logic to clean and standardize datasets
-• Designed analytical query layers using fact-style aggregations
-• Analyzed sales performance across products, categories, regions, and time periods
-• Generated structured outputs for reporting and decision-support analysis
------
-Analytical Outputs:
+- Loading raw CSV data into PostgreSQL staging tables
+- Cleaning and standardizing inconsistent or missing data
+- Designing structured relational tables for analysis
+- Applying SQL transformations to prepare datasets for reporting
+- Building aggregated datasets for business insights
 
-• Total sales aggregated by product, category, and region
-• Monthly and yearly sales trends using SQL date-based grouping
-• Top-performing products based on revenue and quantity sold
-• Customer-level purchase summaries using aggregation queries
-• Regional sales distribution analysis using GROUP BY operations
------
-Project Structure:
+---
 
-This project simulates a simplified ETL workflow using PostgreSQL:
+## Skills Demonstrated
 
-• Raw Layer: retail_sales_raw.csv loaded into staging table
-• Staging Layer: data cleaning and type standardization using SQL
-• Transformation Layer: structured SQL queries for analytical preparation
-• Output Layer: aggregated reporting queries for insights
+SQL • PostgreSQL • ETL Concepts • Data Cleaning • Data Modeling • Data Transformation • Analytical Querying • Reporting
 
-This reflects a foundational ETL learning pattern commonly used in SQL training projects, where raw data is progressively transformed into analysis-ready datasets.
+---
+
+## Project Highlights
+
+- Transformed raw retail sales CSV data into structured PostgreSQL tables
+- Built SQL-based transformation logic for cleaning and standardisation
+- Created analytical query layers using aggregation techniques
+- Analysed sales performance across products, categories, regions, and time periods
+- Generated structured outputs for reporting and decision support
+
+---
+
+## Analytical Outputs
+
+- Total sales by product, category, and region
+- Monthly and yearly sales trend analysis using SQL date functions
+- Top-performing products based on revenue and quantity sold
+- Customer purchase summaries using aggregation queries
+- Regional sales distribution analysis using GROUP BY
+
+---
+
+## Project Structure
+
+This project follows a simplified ETL workflow:
+
+- Raw Layer: raw CSV data loaded into staging table
+- Staging Layer: data cleaning and standardisation using SQL
+- Transformation Layer: structured SQL queries for analytical preparation
+- Output Layer: aggregated reporting queries for insights
+
+---
+
+## Conclusion
+
+This project demonstrates foundational SQL and ETL skills used in data analytics workflows, focusing on transforming raw data into structured datasets suitable for reporting and business analysis.
 
