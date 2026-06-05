@@ -1,50 +1,74 @@
-Check for NULL values in customers */
+-- =========================================
+-- DATA QUALITY CHECKS & CLEANING (POSTGRESQL)
+-- Retail Order Management System
+-- =========================================
+
+-- =========================
+-- CUSTOMER DATA QUALITY
+-- =========================
+
+-- Identify customers with missing critical information
 SELECT *
 FROM customers
 WHERE first_name IS NULL
    OR last_name IS NULL
    OR email IS NULL;
 
-Remove customers with missing critical information */
+-- Remove incomplete customer records (critical fields missing)
 DELETE FROM customers
 WHERE first_name IS NULL
    OR last_name IS NULL
    OR email IS NULL;
 
-   Check for invalid or negative product prices */
+-- =========================
+-- PRODUCT DATA QUALITY
+-- =========================
+
+-- Check for invalid product prices
 SELECT *
 FROM products
 WHERE price <= 0;
 
-Remove products with invalid price values */
+-- Remove products with invalid pricing
 DELETE FROM products
 WHERE price <= 0;
 
-Check for negative quantities in order_items */
+-- =========================
+-- ORDER ITEMS DATA QUALITY
+-- =========================
+
+-- Check for invalid quantities in order items
 SELECT *
 FROM order_items
 WHERE quantity <= 0;
 
-Remove order items with invalid quantities */
+-- Remove invalid order item records
 DELETE FROM order_items
 WHERE quantity <= 0;
 
-Check for orders with negative total amounts */
+-- =========================
+-- ORDERS DATA QUALITY
+-- =========================
+
+-- Identify orders with invalid total amounts
 SELECT *
 FROM orders
 WHERE total_amount < 0;
 
-Remove invalid orders */
+-- Remove invalid order records
 DELETE FROM orders
 WHERE total_amount < 0;
 
-Check for negative inventory stock */
+-- =========================
+-- INVENTORY DATA QUALITY
+-- =========================
+
+-- Check for negative stock values
 SELECT *
 FROM inventory
 WHERE stock_quantity < 0;
 
-Correct negative stock values */
+-- Correct invalid stock values (set to zero)
 UPDATE inventory
 SET stock_quantity = 0
 WHERE stock_quantity < 0;
-
