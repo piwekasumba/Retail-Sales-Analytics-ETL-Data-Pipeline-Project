@@ -1,6 +1,6 @@
-# Retail Sales Data Pipeline (PostgreSQL)
+- Retail Sales Data Pipeline (PostgreSQL)
 
-## Project Overview
+- Project Overview
 
 This project demonstrates a PostgreSQL-based data pipeline that transforms raw retail sales data into structured, analysis-ready datasets.
 
@@ -10,7 +10,7 @@ The emphasis is on data preparation and transformation logic rather than only qu
 
 ---
 
-## Key Focus Areas
+- Key Focus Areas
 
 - Loading raw CSV data into PostgreSQL staging tables
 - Cleaning and standardizing inconsistent or missing data
@@ -20,13 +20,13 @@ The emphasis is on data preparation and transformation logic rather than only qu
 
 ---
 
-## Skills Demonstrated
+- Skills Demonstrated
 
 SQL • PostgreSQL • ETL Concepts • Data Cleaning • Data Modeling • Data Transformation • Analytical Querying • Reporting
 
 ---
 
-## Project Highlights
+- Project Highlights
 
 - Transformed raw retail sales CSV data into structured PostgreSQL tables
 - Built SQL-based transformation logic for cleaning and standardisation
@@ -36,7 +36,7 @@ SQL • PostgreSQL • ETL Concepts • Data Cleaning • Data Modeling • Data
 
 ---
 
-## Analytical Outputs
+- Analytical Outputs
 
 - Total sales by product, category, and region
 - Monthly and yearly sales trend analysis using SQL date functions
@@ -46,7 +46,7 @@ SQL • PostgreSQL • ETL Concepts • Data Cleaning • Data Modeling • Data
 
 ---
 
-## Project Structure
+- Project Structure
 
 This project follows a simplified ETL workflow:
 
@@ -57,7 +57,7 @@ This project follows a simplified ETL workflow:
 
 ---
 
-## Conclusion
+- Conclusion
 
 This project demonstrates foundational SQL and ETL skills used in data analytics workflows, focusing on transforming raw data into structured datasets suitable for reporting and business analysis.
 
