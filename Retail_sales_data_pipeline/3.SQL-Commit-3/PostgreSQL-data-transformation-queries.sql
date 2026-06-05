@@ -4,7 +4,7 @@
 -- =========================================
 
 -- =========================
--- 1. FACT TABLE: SALES CLEAN DATASET
+-- FACT TABLE: SALES CLEAN DATASET
 -- =========================
 
 CREATE TABLE IF NOT EXISTS sales_clean AS
