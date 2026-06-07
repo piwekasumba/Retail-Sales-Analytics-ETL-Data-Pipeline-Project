@@ -67,3 +67,15 @@ In a production environment, this could evolve into:
 - Data transformation and cleaning
 - Aggregation and reporting logic
 - Structured data pipeline thinking
+
+---
+
+## Reporting Team Relevance
+
+This project demonstrates the type of SQL-based analysis and reporting logic commonly used by junior analysts when:
+
+- Preparing data for business reports
+- Validating reporting outputs
+- Supporting KPI monitoring
+- Investigating performance trends
+- Contributing to operational reporting processes
