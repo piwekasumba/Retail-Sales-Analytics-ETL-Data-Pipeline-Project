@@ -4,7 +4,7 @@
 
 - Retail businesses generate large volumes of transaction data daily. Raw data often contains inconsistencies that make reporting and analysis difficult.
 
-This project demonstrates how SQL-based ETL processes can transform raw retail data into a structured, analytics-ready dataset.
+- This project demonstrates how SQL-based ETL processes can transform raw retail data into a structured, analytics-ready dataset.
 
 ---
 ## Objective
