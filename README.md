@@ -1,81 +1,79 @@
-# Retail Sales Analytics ETL Pipeline (SQL Project)
-
+### Retail Sales Analytics ETL Data Pipeline Project
+---
 ## Business Problem
 
-Retail businesses generate large volumes of transactional data daily. Without structured processing, raw sales data cannot be used effectively for reporting, trend analysis, or decision-making.
+- Retail businesses generate large volumes of transaction data daily. Raw data often contains inconsistencies that make reporting and analysis difficult.
 
-This project demonstrates how SQL can be used to simulate an ETL pipeline that transforms raw retail transactions into an analytics-ready dataset.
-
----
-
-## Reporting Objective
-
-To design a SQL-based data pipeline that:
-
-- Cleans raw retail transaction data
-- Transforms data into structured reporting format
-- Aggregates sales performance metrics
-- Prepares data for business reporting use cases
+This project demonstrates how SQL-based ETL processes can transform raw retail data into a structured, analytics-ready dataset.
 
 ---
-
-## SQL Process
-
-The project simulates an ETL workflow using SQL:
-
-- Extract: Raw transactional data ingestion
-- Transform: Data cleaning, formatting, and validation
-- Load: Structured dataset preparation for analysis
-- Aggregation of sales metrics using SQL queries
-- Grouping by product, category, and time periods
-
+## Objective
+Clean and transform retail sales data
+Create reporting-ready datasets
+Calculate key business KPIs
+Support sales performance analysis
 ---
+## Dataset Overview
 
-## Decision Insight
+- Source: Simulated retail sales dataset
+- Environment: PostgreSQL
 
-How data is transformed before reporting directly affects how sales performance is interpreted.
-
-Even small SQL transformation decisions can influence revenue visibility and trend detection.
-
+Key Areas:
+- Sales Transactions
+- Product Information
+- Customer Purchases
 ---
+## Tools Used
 
-## Business Impact
-
-This pipeline supports:
-
-- More structured sales reporting
-- Improved visibility of product performance
-- Better understanding of sales trends over time
-- Cleaner datasets for decision-making processes
-
+- PostgreSQL
+- SQL
+- Data Cleaning
+- ETL Processing
+- Aggregation Queries
 ---
+## Key KPIs
 
-## What I Would Improve in a Real Company
-
-In a production environment, this could evolve into:
-
-- Automated ETL scheduling
-- Centralised data warehouse integration
-- Real-time reporting pipelines
-- BI-ready datasets for dashboards
-
+- Total Revenue
+- Average Order Value
+- Product Category Performance
+- Monthly Sales Trends
+- Transaction Volume
 ---
+## Key Insights
 
-## Skills Demonstrated
-
-- SQL-based ETL simulation
-- Data transformation and cleaning
-- Aggregation and reporting logic
-- Structured data pipeline thinking
-
+- Revenue performance varies significantly across product categories.
+- Clean data improves reporting reliability and trend visibility.
+- Sales patterns can be identified more effectively after transformation.
 ---
+## Business Recommendations
 
-## Reporting Team Relevance
+- Monitor underperforming product categories regularly.
+- Automate data cleaning processes where possible.
+- Standardize reporting datasets for consistent decision-making.
+---
+## Project Structure
 
-This project demonstrates the type of SQL-based analysis and reporting logic commonly used by junior analysts when:
+- Raw Data Processing
+- Data Cleaning Scripts
+- Transformation Logic
+- Reporting Queries
+- KPI Calculations
+---
+## What This Demonstrates
 
-- Preparing data for business reports
-- Validating reporting outputs
-- Supporting KPI monitoring
-- Investigating performance trends
-- Contributing to operational reporting processes
+- SQL-based ETL thinking
+- Data cleaning techniques
+- Reporting dataset preparation
+- KPI-focused analysis
+- Business-oriented problem solving
+---
+## Next Improvements
+
+- Expand sales trend analysis across additional business scenarios
+- Introduce more advanced data transformation techniques
+- Add deeper customer and product performance segmentation
+- Develop additional KPI reporting metrics for decision support
+---
+## Author
+
+- ### Piwe Kasumba
