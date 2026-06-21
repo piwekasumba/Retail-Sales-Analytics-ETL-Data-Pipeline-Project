@@ -74,6 +74,27 @@ Key Areas:
 - Add deeper customer and product performance segmentation
 - Develop additional KPI reporting metrics for decision support
 ---
+## Business Impact
+
+This project demonstrates how SQL-based ETL processes and retail analytics can improve business visibility and support performance tracking across sales operations.
+
+Potential business outcomes include:
+
+- Improved sales performance tracking across time periods
+- Better inventory and demand visibility
+- Identification of high-performing products and categories
+- Faster decision-making through structured reporting pipelines
+---
+## What I Learned
+
+Through this project I strengthened my understanding of:
+
+- SQL-based ETL (Extract, Transform, Load) workflows
+- Data cleaning and transformation techniques
+- Building structured reporting datasets
+- Retail sales performance analysis
+- Connecting data pipelines to business reporting needs
+---
 ## Author
 
 - ### Piwe Kasumba
