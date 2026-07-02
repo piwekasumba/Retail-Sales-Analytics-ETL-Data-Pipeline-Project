@@ -1,100 +1,157 @@
-### Retail Sales Analytics ETL Data Pipeline Project
+# Retail Sales Analytics ETL Data Pipeline Project
+
+## Project Overview
+
+Retail businesses collect large amounts of sales data every day. Before this data can be used for reporting, it often needs to be cleaned, transformed, and organised into a consistent format.
+
+In this project, I used PostgreSQL to build a simple SQL ETL pipeline that prepares retail sales data for analysis. The project focuses on cleaning raw data, applying transformations, creating reporting-ready datasets, and using SQL to calculate business KPIs that support sales reporting.
+
+The aim of this project was to strengthen my understanding of SQL, ETL processes, and how clean data supports better business decisions.
+
 ---
-## Business Problem
 
-- Retail businesses generate large volumes of transaction data daily. Raw data often contains inconsistencies that make reporting and analysis difficult.
+# Business Problem
 
-- This project demonstrates how SQL-based ETL processes can transform raw retail data into a structured, analytics-ready dataset.
+Retail sales data can contain missing values, duplicate records, and inconsistent formats that reduce the accuracy of reporting.
+
+Without a structured ETL process, businesses may struggle to produce reliable reports or monitor sales performance effectively.
+
+This project demonstrates how SQL can be used to clean, transform, and prepare retail data for reporting and analysis.
 
 ---
-## Objective
-Clean and transform retail sales data
-Create reporting-ready datasets
-Calculate key business KPIs
-Support sales performance analysis
+
+# Project Objectives
+
+- Clean and prepare raw retail sales data
+- Transform data into a reporting-ready format
+- Calculate business KPIs using SQL
+- Analyse retail sales performance
+- Produce datasets that support business reporting
+
 ---
-## Dataset Overview
 
-- Source: Simulated retail sales dataset
-- Environment: PostgreSQL
+# Dataset
 
-Key Areas:
+**Dataset Type**
+
+Simulated Retail Sales Dataset
+
+**Database**
+
+PostgreSQL
+
+### Main Data Areas
+
 - Sales Transactions
-- Product Information
-- Customer Purchases
+- Products
+- Customers
+
 ---
-## Tools Used
+
+# Skills Demonstrated
 
 - PostgreSQL
 - SQL
 - Data Cleaning
-- ETL Processing
-- Aggregation Queries
+- Data Transformation
+- ETL Processes
+- Data Aggregation
+- Business Reporting
+- KPI Development
+
 ---
-## Key KPIs
+
+# Business Questions Explored
+
+This project uses SQL to explore questions such as:
+
+- How can raw sales data be cleaned for reporting?
+- Which product categories generate the highest revenue?
+- How do sales change over time?
+- What KPIs can be used to measure retail sales performance?
+- How can SQL support a simple ETL workflow?
+
+---
+
+# Key KPIs
 
 - Total Revenue
 - Average Order Value
-- Product Category Performance
-- Monthly Sales Trends
 - Transaction Volume
+- Monthly Sales Trends
+- Product Category Performance
+
 ---
-## Key Insights
 
-- Revenue performance varies significantly across product categories.
-- Clean data improves reporting reliability and trend visibility.
-- Sales patterns can be identified more effectively after transformation.
+# Key Findings
+
+The analysis showed that:
+
+- Data cleaning improves the quality and consistency of reporting.
+- Sales performance differs across product categories.
+- SQL transformations make raw data easier to analyse.
+- KPI reporting provides a clearer view of business performance.
+
 ---
-## Business Recommendations
 
-- Monitor underperforming product categories regularly.
-- Automate data cleaning processes where possible.
-- Standardize reporting datasets for consistent decision-making.
+# Business Recommendations
+
+Based on the analysis:
+
+- Standardise data before reporting.
+- Monitor sales KPIs regularly.
+- Review product category performance over time.
+- Continue improving data quality to support reliable reporting.
+
 ---
-## Project Structure
 
-- Raw Data Processing
-- Data Cleaning Scripts
-- Transformation Logic
-- Reporting Queries
-- KPI Calculations
+# Project Structure
+
+```
+- Retail-Sales-Analytics-ETL-Data-Pipeline
+
+- Database Schema
+- Raw Data
+-  Data Cleaning Scripts
+- ETL Transformation Scripts
+- Analytical SQL Queries
+- KPI Queries
+- README.md
+```
+
 ---
-## What This Demonstrates
 
-- SQL-based ETL thinking
-- Data cleaning techniques
-- Reporting dataset preparation
-- KPI-focused analysis
-- Business-oriented problem solving
+# Business Impact
+
+This project demonstrates how SQL can be used to prepare retail sales data for reporting through a simple ETL process.
+
+By cleaning and transforming the data before analysis, the reporting becomes more reliable and easier to use for monitoring sales performance and supporting business decisions.
+
 ---
-## Next Improvements
 
-- Expand sales trend analysis across additional business scenarios
-- Introduce more advanced data transformation techniques
-- Add deeper customer and product performance segmentation
-- Develop additional KPI reporting metrics for decision support
+# What I Learned
+
+Through this project I improved my ability to:
+
+- Build SQL ETL workflows
+- Clean and transform data
+- Prepare reporting-ready datasets
+- Calculate business KPIs
+- Analyse retail sales data using SQL
+- Connect technical SQL work to business reporting
+
 ---
-## Business Impact
 
-This project demonstrates how SQL-based ETL processes and retail analytics can improve business visibility and support performance tracking across sales operations.
+# About This Project
 
-Potential business outcomes include:
+I completed this project to strengthen my practical SQL and data analysis skills while preparing for entry-level Data Analyst and Reporting Analyst opportunities in South Africa. It reflects how I approach data cleaning, ETL processes, and business reporting using PostgreSQL.
 
-- Improved sales performance tracking across time periods
-- Better inventory and demand visibility
-- Identification of high-performing products and categories
-- Faster decision-making through structured reporting pipelines
 ---
-## What I Learned
 
-Through this project I strengthened my understanding of:
+# Author
 
-- SQL-based ETL (Extract, Transform, Load) workflows
-- Data cleaning and transformation techniques
-- Building structured reporting datasets
-- Retail sales performance analysis
-- Connecting data pipelines to business reporting needs
----
-## Author
+**Piwe Kasumba**
 
-- ### Piwe Kasumba
+Junior Data Analyst (SQL Focus)
+
+South Africa
