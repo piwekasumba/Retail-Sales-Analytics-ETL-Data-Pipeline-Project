@@ -1,74 +1,118 @@
--- =========================================
--- DATA QUALITY CHECKS & CLEANING (POSTGRESQL)
--- Retail Order Management System
--- =========================================
+-- ==========================================================
+-- DATA QUALITY CHECKS & CLEANING
+-- Retail Sales Analytics ETL Data Pipeline (PostgreSQL)
+--
+-- Purpose:
+-- Validate and clean retail sales data before reporting.
+-- Improving data quality helps ensure accurate KPI reporting,
+-- reliable business insights, and consistent decision-making.
+-- ==========================================================
 
--- =========================
+-- ==========================================================
 -- CUSTOMER DATA QUALITY
--- =========================
+-- Business Question:
+-- Are any customer records missing essential information?
+--
+-- Business Purpose:
+-- Customer records with missing names or email addresses
+-- reduce reporting accuracy and make customer analysis
+-- unreliable.
+-- ==========================================================
 
--- Identify customers with missing critical information
 SELECT *
 FROM customers
 WHERE first_name IS NULL
    OR last_name IS NULL
    OR email IS NULL;
 
--- Remove incomplete customer records (critical fields missing)
+-- Remove incomplete customer records
+
 DELETE FROM customers
 WHERE first_name IS NULL
    OR last_name IS NULL
    OR email IS NULL;
 
--- =========================
+-- ==========================================================
 -- PRODUCT DATA QUALITY
--- =========================
+-- Business Question:
+-- Are there products with invalid prices?
+--
+-- Business Purpose:
+-- Incorrect pricing affects revenue calculations,
+-- sales reporting and KPI accuracy.
+-- ==========================================================
 
--- Check for invalid product prices
 SELECT *
 FROM products
 WHERE price <= 0;
 
--- Remove products with invalid pricing
+-- Remove products with invalid prices
+
 DELETE FROM products
 WHERE price <= 0;
 
--- =========================
--- ORDER ITEMS DATA QUALITY
--- =========================
+-- ==========================================================
+-- ORDER ITEM DATA QUALITY
+-- Business Question:
+-- Are any order items recorded with invalid quantities?
+--
+-- Business Purpose:
+-- Negative or zero quantities produce incorrect
+-- sales totals and distort reporting results.
+-- ==========================================================
 
--- Check for invalid quantities in order items
 SELECT *
 FROM order_items
 WHERE quantity <= 0;
 
--- Remove invalid order item records
+-- Remove invalid order items
+
 DELETE FROM order_items
 WHERE quantity <= 0;
 
--- =========================
--- ORDERS DATA QUALITY
--- =========================
+-- ==========================================================
+-- ORDER DATA QUALITY
+-- Business Question:
+-- Are any orders recorded with invalid total amounts?
+--
+-- Business Purpose:
+-- Incorrect order totals affect revenue reporting,
+-- sales trends and financial analysis.
+-- ==========================================================
 
--- Identify orders with invalid total amounts
 SELECT *
 FROM orders
 WHERE total_amount < 0;
 
--- Remove invalid order records
+-- Remove invalid orders
+
 DELETE FROM orders
 WHERE total_amount < 0;
 
--- =========================
+-- ==========================================================
 -- INVENTORY DATA QUALITY
--- =========================
+-- Business Question:
+-- Are there products with negative inventory levels?
+--
+-- Business Purpose:
+-- Negative stock values reduce reporting reliability
+-- and may indicate data entry or processing errors.
+-- ==========================================================
 
--- Check for negative stock values
 SELECT *
 FROM inventory
 WHERE stock_quantity < 0;
 
--- Correct invalid stock values (set to zero)
+-- Correct invalid inventory values
+
 UPDATE inventory
 SET stock_quantity = 0
 WHERE stock_quantity < 0;
+
+-- ==========================================================
+-- Data Quality Outcome
+--
+-- The cleaned dataset provides a more reliable foundation
+-- for SQL analysis, KPI reporting, dashboard development,
+-- and business decision-making.
+-- ==========================================================
