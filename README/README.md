@@ -1,108 +1,209 @@
-Retail Sales Data Pipeline (PostgreSQL) — SQL ETL & Analysis
+# Retail Sales Data Pipeline (PostgreSQL)
 
-Project Overview:
+## Executive Summary
 
-This project is a PostgreSQL-based SQL project where I worked with a retail sales dataset to practice data cleaning, relational database design, and basic analytics.
+This project demonstrates my ability to use PostgreSQL to prepare, transform and analyse retail sales data for business reporting.
 
-It simulates a simple ETL-style process where raw data is structured into tables and then queried to produce insights.
+Using a simulated retail dataset, I built a simple SQL ETL workflow that loads, cleans and structures transactional data into reporting-ready datasets. I then used SQL to calculate key business metrics, analyse sales performance and produce insights that support business decision-making.
 
-The main focus is learning how to move from raw data → structured tables → SQL analysis.
+The project reflects the practical SQL, reporting and analytical skills expected of an aspiring entry-level Reporting Analyst.
 
-Objectives
+---
 
-- Build and structure a relational database using PostgreSQL
-- Practice transforming raw data into clean tables
-- Apply basic data cleaning using SQL
-- Write queries to analyze sales and customer behavior
-- Improve understanding of joins and aggregations
+# Business Scenario
 
-Business Value:
+Retail businesses generate large volumes of sales data every day. Before this information can be used for reporting, it must be organised, cleaned and transformed into a reliable format.
 
-This type of dataset is similar to what retail companies use to track sales and customers.
+This project demonstrates how SQL can be used to prepare retail sales data for reporting, monitor business performance and support data-driven decision-making.
 
-This project helps to understand:
+---
 
-- Which products sell best
-- How customers behave
-- Basic sales trends over time
-- How structured data supports reporting
+# Reporting Objectives
 
-Database Structure
+- Build reporting-ready SQL queries
+- Clean and transform retail sales data
+- Apply a simple SQL ETL workflow
+- Calculate business KPIs
+- Analyse sales performance
+- Produce structured reporting outputs
+- Support business decision-making using SQL
 
-The project uses a simple relational design:
+---
 
-- customers → stores customer details
-- products → stores product information and price
-- orders → stores purchase transactions
-- order_items → links products to orders
-- inventory → tracks stock levels
+# Dataset
 
-ETL Flow (Simple Version):
+**Dataset Type**
 
-1. Load
-Data is inserted into PostgreSQL tables
+Simulated Retail Sales Dataset
 
-2. Clean / Prepare
-Handle missing values where needed
-Ensure correct data types
-Maintain relationships using foreign keys
+**Database**
 
-3. Analyze
-Use SQL queries to generate insights from the data
+PostgreSQL
 
-Analytics Work:
+### Focus Areas
 
-Sales Analysis
-- Total sales by product and category
-- Sales trends over time (basic grouping)
+- Customers
+- Products
+- Orders
+- Order Items
+- Inventory
 
-Customer Analysis
-- Customer spending totals
-- Identifying frequent customers
+---
 
-Product Analysis
-- Best-selling products by quantity
-- Product performance comparison
+# Skills Demonstrated
 
-Inventory Check
-- Basic stock tracking
-- Comparing product demand vs stock levels
+## SQL
 
-Example Queries:
+- PostgreSQL
+- SELECT
+- WHERE
+- GROUP BY
+- ORDER BY
+- Aggregate Functions
+- INNER JOIN
+- LEFT JOIN
+- CASE Expressions
 
--- Sales by category
+## ETL & Data Preparation
 
-SELECT 
-    p.category,
-    SUM(oi.quantity * oi.price) AS total_sales
-FROM order_items oi
-JOIN products p 
-    ON oi.product_id = p.product_id
-GROUP BY p.category
-ORDER BY total_sales DESC;
+- Data Cleaning
+- Data Transformation
+- Data Validation
+- Relational Database Design
+- Primary & Foreign Keys
 
--- Customer spending
+## Reporting
 
-SELECT 
-    c.customer_id,
-    c.first_name,
-    c.last_name,
-    SUM(o.total_amount) AS total_spent
-FROM customers c
-JOIN orders o 
-    ON c.customer_id = o.customer_id
-GROUP BY c.customer_id, c.first_name, c.last_name
-ORDER BY total_spent DESC;
+- KPI Reporting
+- Sales Analysis
+- Customer Analysis
+- Product Performance
+- Business Reporting
+- Data Summarisation
 
--- Top selling products
+## Professional
 
-SELECT 
-    p.product_name,
-    SUM(oi.quantity) AS total_sold
-FROM order_items oi
-JOIN products p 
-    ON oi.product_id = p.product_id
-GROUP BY p.product_name
-ORDER BY total_sold DESC;
+- Analytical Thinking
+- Problem Solving
+- Attention to Detail
+- Business Communication
 
+---
 
+# ETL Workflow
+
+### Extract
+
+- Load raw retail sales data into PostgreSQL tables.
+
+### Transform
+
+- Validate records.
+- Clean inconsistent data.
+- Maintain relationships using primary and foreign keys.
+- Create structured datasets for reporting.
+
+### Load
+
+- Store transformed data in reporting-ready tables for analysis.
+
+---
+
+# Reporting Outputs
+
+- Sales reporting
+- Customer spending summaries
+- Product performance reporting
+- Revenue by category
+- Monthly sales trends
+- Inventory reporting
+- Reporting-ready datasets
+
+---
+
+# Business Insights
+
+- Identified top-performing products by revenue
+- Analysed customer purchasing behaviour
+- Measured sales performance across product categories
+- Monitored monthly sales trends
+- Compared inventory levels with product demand
+- Produced reporting-ready business summaries
+
+---
+
+# Business Recommendations
+
+- Monitor product category performance regularly.
+- Review customer purchasing trends to support marketing decisions.
+- Track monthly sales KPIs to identify performance changes.
+- Improve inventory planning using sales trends.
+- Use reusable SQL queries to improve reporting efficiency.
+
+---
+
+# Example Business Question
+
+**Business Question**
+
+Which product categories generated the highest sales revenue?
+
+**Why It Matters**
+
+Helps retail managers understand which categories contribute most to overall revenue and supports merchandising, inventory and sales planning decisions.
+
+**Reporting Outcome**
+
+Produces a ranked sales report showing revenue generated by each product category.
+
+---
+
+# What I Learned
+
+Through this project I strengthened my ability to:
+
+- Build relational databases using PostgreSQL
+- Clean and transform business data
+- Apply SQL joins and aggregate functions
+- Calculate reporting KPIs
+- Produce reporting-ready datasets
+- Connect SQL analysis to business reporting requirements
+
+---
+
+# Repository Highlights
+
+- Built using PostgreSQL
+- Relational database design
+- SQL ETL workflow
+- Data cleaning and transformation
+- Reporting-focused SQL
+- KPI reporting
+- Business analysis
+- Documentation
+
+---
+
+# About This Project
+
+I completed this project as part of building my SQL portfolio while preparing for entry-level Reporting Analyst and Data Analyst opportunities in South Africa.
+
+The project demonstrates how SQL can be used to prepare retail sales data, generate reporting metrics and produce business insights that support operational reporting and decision-making.
+
+---
+
+# Why This Project Matters
+
+This project goes beyond writing SQL queries by demonstrating how raw business data can be prepared, transformed and analysed using a structured SQL workflow.
+
+It reflects the type of reporting, data preparation and analytical thinking commonly required in entry-level reporting and analytics roles.
+
+---
+
+# About Me
+
+**Piwe Kasumba**
+
+Aspiring Reporting Analyst (SQL)
+
+Building practical SQL projects focused on business reporting, KPI analysis, data quality and decision support while preparing for an entry-level Reporting Analyst opportunity in South Africa.
