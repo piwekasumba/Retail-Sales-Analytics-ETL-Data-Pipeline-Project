@@ -1,22 +1,32 @@
+
 -- ============================================================
--- RETAIL SALES ANALYTICAL REPORTING QUERIES
+-- RETAIL SALES REPORTING QUERIES
 -- PostgreSQL
 --
+-- Project type: Self-directed SQL reporting project
+-- Data: Use the project's existing sales_clean and customers tables
+--
 -- Purpose:
--- Demonstrate how SQL can be used to generate reporting-ready
--- outputs that support sales monitoring and business decisions.
+-- Demonstrate SQL techniques used to calculate sales KPIs,
+-- review performance trends, compare products and categories,
+-- analyse customer spending, and prepare report-ready results.
+--
+-- Note:
+-- These queries demonstrate reporting logic. Results should be
+-- checked against the actual dataset before being presented as
+-- verified business findings.
 -- ============================================================
 
 
 -- ============================================================
--- KPI REPORT
--- Total Revenue
+-- REPORT 01: TOTAL SALES KPI
 --
--- Business Question:
--- What is the total revenue generated from all sales?
+-- Business question:
+-- What is the total recorded sales value?
 --
--- Business Purpose:
--- Provides a high-level sales KPI for management reporting.
+-- Reporting use:
+-- Provides a high-level measure of sales across the records
+-- included in the reporting dataset.
 -- ============================================================
 
 SELECT
@@ -24,17 +34,19 @@ SELECT
 FROM sales_clean;
 
 
-
 -- ============================================================
--- KPI REPORT
--- Monthly Revenue Trend
+-- REPORT 02: MONTHLY SALES TREND
 --
--- Business Question:
--- How has revenue changed over time?
+-- Business question:
+-- How much sales revenue was recorded in each month?
 --
--- Business Purpose:
--- Helps management monitor monthly sales performance and
--- identify growth or declining sales periods.
+-- Reporting use:
+-- Supports month-by-month monitoring and helps identify
+-- changes in recorded sales over time.
+--
+-- Note:
+-- This query assumes order_year and order_month are available
+-- and correctly populated in sales_clean.
 -- ============================================================
 
 SELECT
@@ -50,17 +62,14 @@ ORDER BY
     order_month;
 
 
-
 -- ============================================================
--- SALES PERFORMANCE REPORT
--- Top 5 Products by Revenue
+-- REPORT 03: TOP 5 PRODUCTS BY REVENUE
 --
--- Business Question:
--- Which products generate the highest revenue?
+-- Business question:
+-- Which products have the highest recorded sales revenue?
 --
--- Business Purpose:
--- Supports product performance reporting and helps identify
--- top revenue-generating products.
+-- Reporting use:
+-- Compares products using revenue and units sold.
 -- ============================================================
 
 SELECT
@@ -71,21 +80,19 @@ FROM sales_clean
 GROUP BY
     product_name
 ORDER BY
-    total_revenue DESC
+    total_revenue DESC,
+    product_name
 LIMIT 5;
 
 
-
 -- ============================================================
--- SALES REPORT
--- Revenue by Product Category
+-- REPORT 04: SALES BY PRODUCT CATEGORY
 --
--- Business Question:
--- Which product categories contribute the most revenue?
+-- Business question:
+-- How is recorded sales revenue distributed across categories?
 --
--- Business Purpose:
--- Supports category performance reporting and helps identify
--- areas contributing most to overall sales.
+-- Reporting use:
+-- Makes it easier to compare category-level sales performance.
 -- ============================================================
 
 SELECT
@@ -95,69 +102,107 @@ FROM sales_clean
 GROUP BY
     category
 ORDER BY
-    category_revenue DESC;
-
+    category_revenue DESC,
+    category;
 
 
 -- ============================================================
--- CUSTOMER REPORT
--- Top 5 Customers by Total Spending
+-- REPORT 05: TOP 5 CUSTOMERS BY TOTAL SPENDING
 --
--- Business Question:
--- Which customers have spent the most?
+-- Business question:
+-- Which customers have the highest total recorded spending?
 --
--- Business Purpose:
--- Supports customer value reporting and helps identify
--- high-value customers for business monitoring.
+-- Reporting use:
+-- Summarises order counts, total spending and average order
+-- value for each customer.
+--
+-- Method:
+-- First calculate sales at order level, then summarise orders
+-- by customer. This avoids treating multiple order lines as
+-- separate orders when an order contains multiple products.
 -- ============================================================
 
+WITH order_totals AS (
+    SELECT
+        customer_id,
+        order_id,
+        SUM(total_sales) AS order_total
+    FROM sales_clean
+    GROUP BY
+        customer_id,
+        order_id
+),
+customer_spending AS (
+    SELECT
+        customer_id,
+        COUNT(*) AS total_orders,
+        SUM(order_total) AS total_spent,
+        ROUND(AVG(order_total), 2) AS average_order_value
+    FROM order_totals
+    GROUP BY
+        customer_id
+)
 SELECT
     c.customer_id,
     c.first_name,
     c.last_name,
-    COUNT(sc.order_id) AS total_orders,
-    SUM(sc.total_sales) AS total_spent,
-    ROUND(AVG(sc.total_sales), 2) AS average_order_value
-FROM sales_clean AS sc
+    cs.total_orders,
+    cs.total_spent,
+    cs.average_order_value
+FROM customer_spending AS cs
 INNER JOIN customers AS c
-    ON sc.customer_id = c.customer_id
-GROUP BY
-    c.customer_id,
-    c.first_name,
-    c.last_name
+    ON cs.customer_id = c.customer_id
 ORDER BY
-    total_spent DESC
+    cs.total_spent DESC,
+    c.customer_id
 LIMIT 5;
 
 
-
 -- ============================================================
--- EXPORT REPORT
--- Top Customers
+-- REPORT 06: EXPORT-READY TOP CUSTOMER RESULTS
 --
 -- Purpose:
--- Export the customer spending report for use in dashboards,
--- reporting tools, or further business analysis.
+-- Returns a clean result set that can be exported as CSV from
+-- pgAdmin for further reporting or review.
+--
+-- Important:
+-- This SELECT query does not create a CSV file by itself.
+-- Use pgAdmin's result-grid export/save option to save the
+-- results as a CSV file.
 -- ============================================================
 
-COPY (
+WITH order_totals AS (
     SELECT
-        c.customer_id,
-        c.first_name,
-        c.last_name,
-        COUNT(sc.order_id) AS total_orders,
-        SUM(sc.total_sales) AS total_spent,
-        ROUND(AVG(sc.total_sales), 2) AS average_order_value
-    FROM sales_clean AS sc
-    INNER JOIN customers AS c
-        ON sc.customer_id = c.customer_id
+        customer_id,
+        order_id,
+        SUM(total_sales) AS order_total
+    FROM sales_clean
     GROUP BY
-        c.customer_id,
-        c.first_name,
-        c.last_name
-    ORDER BY
-        total_spent DESC
-    LIMIT 5
+        customer_id,
+        order_id
+),
+customer_spending AS (
+    SELECT
+        customer_id,
+        COUNT(*) AS total_orders,
+        SUM(order_total) AS total_spent,
+        ROUND(AVG(order_total), 2) AS average_order_value
+    FROM order_totals
+    GROUP BY
+        customer_id
 )
-TO 'results/top_customers.csv'
-WITH CSV HEADER;
+SELECT
+    c.customer_id,
+    c.first_name,
+    c.last_name,
+    cs.total_orders,
+    cs.total_spent,
+    cs.average_order_value
+FROM customer_spending AS cs
+INNER JOIN customers AS c
+    ON cs.customer_id = c.customer_id
+ORDER BY
+    cs.total_spent DESC
+LIMIT 5;
+
+
