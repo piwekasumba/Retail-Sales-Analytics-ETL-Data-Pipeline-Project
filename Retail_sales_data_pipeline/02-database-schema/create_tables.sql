@@ -1,35 +1,35 @@
 
--- ==========================================================
+-- ============================================================
 -- RETAIL SALES ANALYTICS ETL DATA PIPELINE
--- PostgreSQL Database Schema
+-- DATABASE SCHEMA
+-- PostgreSQL
 --
 -- Purpose:
--- Define a relational database structure for a simulated
--- retail dataset used to practise SQL-based reporting,
--- data preparation and data-quality checks.
+-- Define the relational database structure used to organise
+-- simulated retail data for SQL-based preparation, analysis
+-- and reporting.
 --
--- Reporting areas:
--- - Sales and revenue reporting
--- - Customer and product analysis
--- - Order-level and item-level reconciliation
--- - Inventory monitoring
--- - Relational data integrity
+-- Reporting and analysis areas:
+--   1. Sales and revenue analysis
+--   2. Customer and product analysis
+--   3. Order-level and item-level reconciliation
+--   4. Inventory monitoring
+--   5. Relational integrity and data quality
 --
--- Data and experience boundary:
+-- Project boundary:
 -- This is a self-directed learning project using simulated
 -- data. It does not represent production work experience.
 --
--- Execution note:
--- This script creates tables and indexes if they do not
--- already exist. It does not migrate existing table
--- structures or load data.
--- ==========================================================
+-- Execution:
+-- Creates tables and indexes when they do not already exist.
+-- Does not migrate existing structures or load data.
+-- ============================================================
 
 
--- ==========================================================
+-- ============================================================
 -- 1. CUSTOMERS
--- Stores customer details used in sales reporting.
--- ==========================================================
+-- Customer details used in retail reporting.
+-- ============================================================
 
 CREATE TABLE IF NOT EXISTS customers (
     customer_id SERIAL PRIMARY KEY,
@@ -42,11 +42,10 @@ CREATE TABLE IF NOT EXISTS customers (
 );
 
 
--- ==========================================================
+-- ============================================================
 -- 2. PRODUCTS
--- Stores product descriptions, categories and current
--- reference prices.
--- ==========================================================
+-- Product descriptions, categories and reference prices.
+-- ============================================================
 
 CREATE TABLE IF NOT EXISTS products (
     product_id SERIAL PRIMARY KEY,
@@ -57,17 +56,17 @@ CREATE TABLE IF NOT EXISTS products (
 );
 
 
--- ==========================================================
+-- ============================================================
 -- 3. ORDERS
--- Stores order dates and recorded order totals.
+-- Customer orders and their recorded order totals.
 --
--- total_amount represents the recorded order total.
+-- total_amount stores the recorded order value.
 -- It is not automatically calculated from order_items.
 --
 -- Reconciliation:
--- Compare total_amount with the sum of quantity * price
--- from order_items for the same order.
--- ==========================================================
+-- Compare total_amount against the sum of quantity * price
+-- for the corresponding order items.
+-- ============================================================
 
 CREATE TABLE IF NOT EXISTS orders (
     order_id SERIAL PRIMARY KEY,
@@ -79,16 +78,15 @@ CREATE TABLE IF NOT EXISTS orders (
 );
 
 
--- ==========================================================
+-- ============================================================
 -- 4. ORDER ITEMS
--- Stores the products and quantities included in each order.
+-- Individual product lines belonging to customer orders.
 --
--- price is the unit price recorded for the transaction.
--- It is stored separately from products.price so historical
--- reporting can use the price recorded for the order item.
+-- price stores the transaction-level unit price rather
+-- than relying on the current products.price value.
 --
 -- Each row represents one product line within an order.
--- ==========================================================
+-- ============================================================
 
 CREATE TABLE IF NOT EXISTS order_items (
     order_item_id SERIAL PRIMARY KEY,
@@ -103,15 +101,13 @@ CREATE TABLE IF NOT EXISTS order_items (
 );
 
 
--- ==========================================================
+-- ============================================================
 -- 5. INVENTORY
--- Stores the recorded stock quantity for each product.
+-- Recorded stock quantity for each product.
 --
--- This table represents a stock snapshot, not a complete
--- history of inventory movements.
---
--- One inventory record is permitted per product.
--- ==========================================================
+-- Represents a stock snapshot, not inventory movement
+-- history. One inventory record is permitted per product.
+-- ============================================================
 
 CREATE TABLE IF NOT EXISTS inventory (
     product_id INT PRIMARY KEY
@@ -122,14 +118,13 @@ CREATE TABLE IF NOT EXISTS inventory (
 );
 
 
--- ==========================================================
+-- ============================================================
 -- 6. INDEXES
--- Support common joins and date-based reporting queries.
+-- Support common foreign-key lookups and reporting filters.
 --
 -- Primary keys and UNIQUE constraints create their own
--- indexes. The following indexes support foreign-key
--- lookups and reporting filters.
--- ==========================================================
+-- indexes. These additional indexes support other lookups.
+-- ============================================================
 
 CREATE INDEX IF NOT EXISTS idx_orders_customer_id
     ON orders(customer_id);
@@ -137,8 +132,6 @@ CREATE INDEX IF NOT EXISTS idx_orders_customer_id
 CREATE INDEX IF NOT EXISTS idx_orders_order_date
     ON orders(order_date);
 
--- Composite index supports order-level item retrieval
--- and product lookups within an order.
 CREATE INDEX IF NOT EXISTS idx_order_items_order_product
     ON order_items(order_id, product_id);
 
@@ -146,8 +139,8 @@ CREATE INDEX IF NOT EXISTS idx_order_items_product_id
     ON order_items(product_id);
 
 
--- ==========================================================
--- 7. RELATIONSHIPS AND REPORTING USE
+-- ============================================================
+-- 7. RELATIONSHIPS AND REPORTING CONSIDERATIONS
 --
 -- customers (1) ------< orders
 -- orders (1) ---------< order_items
@@ -155,28 +148,26 @@ CREATE INDEX IF NOT EXISTS idx_order_items_product_id
 -- products (1) ------- inventory
 --
 -- These relationships support practice in:
--- - Sales and revenue reporting
--- - Customer purchase analysis
--- - Product and category performance
--- - Order-total reconciliation
--- - Inventory monitoring
--- - Data validation and relational integrity
+--   - Sales and revenue reporting
+--   - Customer purchase analysis
+--   - Product and category analysis
+--   - Order-total reconciliation
+--   - Inventory monitoring
 --
 -- Data-quality considerations:
--- - Check for orphaned or unmatched records.
--- - Compare recorded order totals with calculated totals.
--- - Validate row counts before and after joins.
--- - Confirm the reporting grain before aggregating.
--- - Review missing or inconsistent business values.
+--   - Check for orphaned or unmatched records.
+--   - Compare recorded and calculated order totals.
+--   - Validate row counts before and after joins.
+--   - Confirm reporting grain before aggregation.
+--   - Review missing or inconsistent business values.
 --
--- Note:
--- The schema defines table structures, relationships,
+-- Implementation boundary:
+-- This script defines database structures, relationships,
 -- constraints and indexes.
 --
--- Data loading, ETL processing, validation queries and
--- reporting outputs must be performed and reviewed
--- separately.
--- ==========================================================
+-- Data loading, ETL transformations, validation queries
+-- and reporting outputs are handled separately.
+-- ============================================================
 
 
 
