@@ -1,34 +1,34 @@
-
 -- =========================================================
 -- ANALYTICAL QUERIES (POSTGRESQL)
--- Retail Sales Data Pipeline
+-- Retail Sales Analytics ETL Data Pipeline
 --
 -- Project context:
--- Self-directed SQL reporting project using project data.
+-- Self-directed SQL reporting work using simulated
+-- retail data prepared within the project.
 --
 -- Purpose:
--- Answer retail reporting questions using the cleaned
--- sales dataset and customer information.
+-- Explore reporting questions using the prepared sales
+-- dataset and related customer information.
 --
 -- Reporting areas:
 -- 1. Overall recorded sales value
--- 2. Monthly sales reporting
+-- 2. Monthly recorded sales value
 -- 3. Product performance
 -- 4. Category performance
 -- 5. Customer sales analysis
 -- 6. Customer join validation
 --
 -- Reporting definitions:
--- - Recorded sales value is the sum of total_sales.
--- - Monthly reporting uses the year and month fields
---   available in sales_clean.
+-- - Recorded sales value is calculated using SUM(total_sales).
+-- - Monthly reporting groups records by order_year
+--   and order_month.
 -- - Customer sales value represents recorded sales
 --   associated with each customer in the dataset.
 --
 -- Limitations:
 -- These queries produce descriptive reporting outputs.
 -- They do not establish business causes, profitability,
--- or future performance.
+-- customer lifetime value or future performance.
 -- =========================================================
 
 
@@ -39,8 +39,8 @@
 -- What is the total recorded sales value?
 --
 -- Reporting purpose:
--- Provides an overall sales figure for the available
--- dataset and its represented reporting period.
+-- Summarises the recorded sales value across the
+-- available prepared dataset.
 --
 -- Output:
 -- One row containing the total recorded sales value.
@@ -91,7 +91,7 @@ ORDER BY
 -- Up to five products, ranked by recorded sales value.
 --
 -- Tie-breaking:
--- Product name is used for consistent ordering when
+-- Product name provides consistent ordering when
 -- recorded sales values are equal.
 -- =========================================================
 
@@ -141,16 +141,22 @@ ORDER BY
 -- Which customers have the highest recorded sales value?
 --
 -- Reporting purpose:
--- Demonstrates joining sales records to customer details
--- and aggregating sales at customer level.
+-- Demonstrates joining prepared sales records to
+-- customer information and aggregating at customer level.
 --
 -- Output:
 -- Up to five customers, ranked by recorded sales value.
 --
 -- Limitation:
 -- This measures recorded sales value associated with
--- customers. It does not establish profitability,
--- customer lifetime value, or future customer behaviour.
+-- customers included in the join.
+-- It does not establish profitability, customer lifetime
+-- value or future customer behaviour.
+--
+-- Note:
+-- INNER JOIN excludes sales records without a matching
+-- customer record. Query 06 provides a separate check
+-- of the customer join.
 -- =========================================================
 
 SELECT
@@ -172,26 +178,30 @@ LIMIT 5;
 
 
 -- =========================================================
--- QUERY 06: CUSTOMER JOIN ROW-COUNT VALIDATION
+-- QUERY 06: CUSTOMER JOIN VALIDATION
 --
 -- Business question:
--- Does joining sales records to customer details change
--- the number of sales rows?
+-- Does joining prepared sales records to customer
+-- information preserve the sales row count?
 --
 -- Reporting purpose:
--- Checks whether the customer join changes the row count.
+-- Reviews whether the customer join introduces
+-- missing matches or additional joined rows.
 --
--- Validation approach:
--- Compare the source sales-row count with the joined
--- sales-row count.
+-- Validation checks:
+-- 1. Compare source and joined sales row counts.
+-- 2. Count sales records without a matching customer.
+-- 3. Identify duplicated non-null customer IDs.
 --
--- Expected result:
--- Equal counts when every sales record matches exactly
--- one customer record.
+-- Expected conditions for PASS:
+-- - No unmatched sales records.
+-- - No duplicated non-null customer IDs.
+-- - Joined and source sales row counts are equal.
 --
--- Important:
--- A matching row count does not prove that every customer
--- relationship is correct. It is one validation check.
+-- Important limitation:
+-- These checks provide evidence about row preservation
+-- and customer-key uniqueness. They do not prove that
+-- every customer relationship or attribute is correct.
 -- =========================================================
 
 WITH source_sales AS (
@@ -199,24 +209,55 @@ WITH source_sales AS (
         COUNT(*) AS source_row_count
     FROM sales_clean
 ),
+
 joined_sales AS (
     SELECT
         COUNT(*) AS joined_row_count
     FROM sales_clean AS sc
     INNER JOIN customers AS c
         ON sc.customer_id = c.customer_id
+),
+
+unmatched_sales AS (
+    SELECT
+        COUNT(*) AS unmatched_sales_row_count
+    FROM sales_clean AS sc
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM customers AS c
+        WHERE c.customer_id = sc.customer_id
+    )
+),
+
+duplicate_customer_ids AS (
+    SELECT
+        COUNT(*) AS duplicate_customer_id_count
+    FROM (
+        SELECT
+            customer_id
+        FROM customers
+        WHERE customer_id IS NOT NULL
+        GROUP BY customer_id
+        HAVING COUNT(*) > 1
+    ) AS duplicates
 )
+
 SELECT
     source_sales.source_row_count,
     joined_sales.joined_row_count,
     joined_sales.joined_row_count
         - source_sales.source_row_count AS row_count_difference,
+    unmatched_sales.unmatched_sales_row_count,
+    duplicate_customer_ids.duplicate_customer_id_count,
     CASE
-        WHEN source_sales.source_row_count
-             = joined_sales.joined_row_count
+        WHEN unmatched_sales.unmatched_sales_row_count = 0
+         AND duplicate_customer_ids.duplicate_customer_id_count = 0
+         AND source_sales.source_row_count = joined_sales.joined_row_count
         THEN 'PASS'
         ELSE 'REVIEW'
     END AS validation_status
 FROM source_sales
-CROSS JOIN joined_sales;
+CROSS JOIN joined_sales
+CROSS JOIN unmatched_sales
+CROSS JOIN duplicate_customer_ids;
 
